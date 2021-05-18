@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+<a href="/flight/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">Back to Flights</a>
+
+<h1>Flight ID: {{f_id}}</h1>
+
+<ol>
+    <div class="alert alert-dark" role="alert">
+        <li>Ticket price: £{{dict_flights[f_id].ticket_price}}</li>
+    </div>
+
+    <div class="alert alert-dark" role="alert">
+        <li>Flight duration: {{dict_flights[f_id].duration}}</li>
+    </div>
+
+    <div class="alert alert-dark" role="alert">
+        <li>Destination: {{dict_flights[f_id].destination}}</li>
+    </div>
+
+    <div class="alert alert-dark" role="alert">
+        <li>From: {{dict_flights[f_id].origin}}</li>
+    </div>
+
+    <div class="alert alert-dark" role="alert">
+       <li>Filled seats: {{dict_flights[f_id].get_seated_passenger_count(db_wrapper)}}</li>
+    </div>
+</ol>
+
+<a href="{{ url_for('flight_passengers', f_id=f_id) }}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">See Passenger List</a>
+{% endblock %}

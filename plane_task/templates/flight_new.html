@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+<a href="/flight/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">Back to Flights</a>
+<form action="{{ url_for('flight_new')}}" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Destination</label>
+    <input type="text" class="form-control" name="destination" id="Destination" placeholder="eg. London">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Ticket Price</label>
+    <input type="number" class="form-control" name="price" id="Price" placeholder="eg. 400">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Duration</label>
+    <input type="number" class="form-control" name="duration" id="Duration" placeholder="eg. 24">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Origin</label>
+    <input type="text" class="form-control" name="origin" id="Origin" placeholder="eg. London">
+  </div>
+  <select class="form-control form-control-sm" name="aircraft">
+        {% for i in dict_aircraft.values() %}
+
+        <option>{{i}}</option>
+
+        {%endfor%}
+        </select>
+  <input  class="btn btn-primary" style="margin-bottom: 10px" type="submit" value="Confirm">
+</form>
+
+{% endblock %}

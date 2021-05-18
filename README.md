@@ -31,10 +31,15 @@
 - run on ports `docker run -d -p 88:80 NAME-OF-IMAGE`
 - delete image `docker rmi NAME-OF-IMAGE` or `docker rmi NAME-OF-IMAGE -f`
 - checking running containers `docker ps`
-- go into container `docker exec -it CONTAINER-ID`
+- go into container `docker exec -it CONTAINER-ID sh`
 - move/copy files between host and container `docker cp /source/file/path.txt CONTAINER:/dest/file/path/.txt`
 
 #### Building customised images, microservices
 - After editing an image, while still running:
-- `docker commit !NAME!-OF-IMAGE OPTIONAL-TAGS` (it's recommended to tag the images with a dockerhub repo address, like `USERNAME/NAME-OF-REPO`)
+- `docker commit !NAME!-OF-IMAGE REPO/TAG` (it's recommended to tag the images with a dockerhub repo address, like `USERNAME/NAME-OF-REPO`)
 - `docker push IMAGE`
+
+#### Automate the build steps of our nginx customised image
+- setup file is named `Dockerfile`
+- We need to use nginx official image as our base image
+- We'll use the keyword `FROM` to import the image

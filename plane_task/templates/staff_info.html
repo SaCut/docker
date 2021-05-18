@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block body %}
+<a href="/staff/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">Back to Staff</a>
+
+<h1>Staff member ID: {{staff_id}}</h1>
+
+<ol>
+
+    <div class="alert alert-dark" role="alert">
+        <li>First name: {{dict_staff[staff_id].first_name}}</li>
+    </div>
+
+    <div class="alert alert-dark" role="alert">
+        <li>Last name: {{dict_staff[staff_id].last_name}}</li>
+    </div>
+
+    <div class="alert alert-dark" role="alert">
+        <li>Age: {{dict_staff[staff_id].age}}</li>
+    </div>
+
+    
+
+</ol>
+
+<a href="{{url_for('staff_assign_to_plane', staff_id=staff_id)}}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">assign to flight</a>
+{% endblock %}

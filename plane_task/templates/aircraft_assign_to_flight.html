@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+ <a href="/aircraft/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">Back to Aircraft</a>
+
+    <h1>Assign Aircraft ID: {{a_id}} to a flight</h1>
+    <form action="{{ url_for('aircraft_assign_to_flight', a_id=a_id) }}" method="POST">
+
+        <select class="form-control form-control-sm" name="flight">
+        {% for i in dict_flights.values() %}
+
+        <option>{{i}}</option>
+
+        {%endfor%}
+        </select>
+        <input  class="btn btn-primary" style="margin-bottom: 10px" type="submit" value="Confirm">
+    </form>
+{% endblock %}

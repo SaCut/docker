@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+ <a href="/staff/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">Back to Staff</a>
+
+    <h1>Staff ID: {{staff_id}}</h1>
+    <form action="{{ url_for('staff_assign_to_plane', staff_id=staff_id) }}" method="POST">
+
+        <select class="form-control form-control-sm" name="flight">
+        {% for i in dict_flights.values() %}
+
+        <option>{{i}}</option>
+
+        {%endfor%}
+        </select>
+        <input  class="btn btn-primary" style="margin-bottom: 10px" type="submit" value="Confirm">
+    </form>
+{% endblock %}

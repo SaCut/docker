@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Terminal{% endblock %}
+
+
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<a href="/flight_new/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">New flight</a>
+
+<table class="table">
+  <thead>
+    <tr style="background-color: lightslategrey">
+      <th scope="col">Flight ID</th>
+      <th scope="col">Ticket Price (£)</th>
+      <th scope="col">Aircraft</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Duration (hours)</th>
+      <th scope="col">Origin</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {%for i in range(1, len + 1)%}
+    <tr style="background-color: aliceblue">
+      <th scope="row"><a href="{{ url_for('flight_info', f_id=dict_flights[i].oid) }}">{{dict_flights[i].oid}}</a></th>
+      <td>{{dict_flights[i].ticket_price}}</td>
+      <td>{{dict_flights[i].aircraft}}</td>
+        <td>{{dict_flights[i].destination}}</td>
+        <td>{{dict_flights[i].duration}}</td>
+      <td>{{dict_flights[i].origin}}</td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+{% endblock %}

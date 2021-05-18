@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+<a href="/passengers/" class="btn btn-primary" style="margin-bottom: 10px" tabindex="-1" role="button" aria-disabled="true">Back to Passengers</a>
+<form action="{{ url_for('passengers_new') }}" method="POST">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">First Name</label>
+    <input type="text" class="form-control" name="firstname" id="FirstName" placeholder="eg. elon">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Second Name</label>
+    <input type="text" class="form-control"  name="secondname" id="SecondName" placeholder="eg. Musk">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">age</label>
+    <input type="number" class="form-control" name="age" id="Age" placeholder="eg. 24">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Passport Number</label>
+    <input type="text" class="form-control"  name="passport" id="PassportNo" placeholder="eg. 123456">
+  </div>
+  <input  class="btn btn-primary" style="margin-bottom: 10px" type="submit" value="Confirm">
+</form>
+
+{% endblock %}
