@@ -1,18 +1,18 @@
 # syntax=docker/dockerfile:1
-FROM python:3.8
+FROM python:3
 # FROM ubuntu:20.04
 
 # label is a good practice, though optional
-LABEL MAINTAINER = Saverio Cutrupi "scutrupi@spartaglobal.com"
+LABEL MAINTAINER = scutrupi@spartaglobal.com
 
 # RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get update \
- && apt-get install unixodbc -y \
- && apt-get install unixodbc-dev -y \
- && apt-get install freetds-dev -y \
- && apt-get install freetds-bin -y \
- && apt-get install tdsodbc -y \
- && apt-get install --reinstall build-essential -y
+    && apt-get install unixodbc -y \
+    && apt-get install unixodbc-dev -y \
+    && apt-get install freetds-dev -y \
+    && apt-get install freetds-bin -y \
+    && apt-get install tdsodbc -y \
+    && apt-get install --reinstall build-essential -y
 
 # populate "ocbcinst.ini" as this is where ODBC driver config sits
 RUN echo "[FreeTDS]\n\
