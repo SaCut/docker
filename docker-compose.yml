@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  mongo:
+    container_name: mongo
+    build: ./db
+    volumes:
+      - ./db/data:/data
+    ports:
+      - "27017:27017"
+
+  app:
+    container_name: app
+    build: ./app
+    environment:
+      - DB_HOST=mongodb://mongo:27017/posts
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app/data:/data
+    depends_on: 
+      - mongo

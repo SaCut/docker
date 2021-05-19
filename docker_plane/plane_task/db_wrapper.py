@@ -18,9 +18,9 @@ class DbWrapper:
             self.password = file_lines[2].strip("\n")
             self.db_name = file_lines[3].strip("\n")
 
-            self.connection = pyodbc.connect('DRIVER={FreeTDS};' +
-                f'SERVER={self.ip};PORT=1433;DATABASE={self.db_name};'
-                f'UID={self.uname};PWD{self.password};TDS_VERSION=8.0')
+            self.connection = pyodbc.connect('DRIVER={FreeTDS}; ' +
+                f'SERVER={self.ip}; PORT=1433; DATABASE={self.db_name}; ' +
+                f'UID={self.uname}; PWD{self.password}; TDS_VERSION=8.0')
 
             self.cursor = self.connection.cursor()
         except FileNotFoundError as err:

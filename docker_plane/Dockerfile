@@ -16,26 +16,26 @@ RUN apt-get update \
 
 # populate "ocbcinst.ini" as this is where ODBC driver config sits
 RUN echo "[FreeTDS]\n\
-Description = FreeTDS Driver\n\
-Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so\n\
-Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
+Description=FreeTDS Driver\n\
+Driver=/usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so\n\
+Setup=/usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
 
 # RUN apt-get install -y python3 python3-pip python3-dev
 
-# set working directory
-WORKDIR /plane_task
-
 # copy the requirements file
-COPY ./requirements.txt /plane_task/requirements.txt
+COPY ./requirements.txt .
 
 # intalling requirements
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # copy the rest of the repo
-COPY . .
+COPY ./plane_task /
+
+# set working directory
+# WORKDIR /plane_task
 
 # run the app
-CMD [ "python3", "app.py"]
+CMD [ "python", "app.py"]
 
 # # incoming port
 EXPOSE 5000
